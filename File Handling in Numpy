@@ -1,0 +1,131 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMJ7SQg1KE9D0vxRdN2HrPN",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/demigod1208/numpy-practice/blob/main/File%20Handling%20in%20Numpy\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "id": "jx9ZmbJHmstN",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "b7c302cf-6e1c-4f92-e03d-cc25ec04bc93"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 4  3 40  7]\n",
+            " [ 2  5 26 11]\n",
+            " [ 6 33 43 22]\n",
+            " [32 14 29 37]\n",
+            " [ 0 31 17 23]\n",
+            " [13 45 37 28]]\n",
+            "\n",
+            "[[ 9 33 27 50]\n",
+            " [ 4 45  4 50]\n",
+            " [31 22 24 47]\n",
+            " [32  8 26 11]\n",
+            " [42 32 15 11]\n",
+            " [47 10 37 28]]\n",
+            "\n",
+            "[[ 4  3 40  7]\n",
+            " [ 2  5 26 11]\n",
+            " [ 6 33 43 22]\n",
+            " [32 14 29 37]\n",
+            " [ 0 31 17 23]\n",
+            " [13 45 37 28]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "import random as r\n",
+        "import numpy as np\n",
+        "\n",
+        "ma = [r.randint(0,50) for i in range(24)]\n",
+        "ma = np.array(ma).reshape(6,4)\n",
+        "print(ma)\n",
+        "print()\n",
+        "mb = [r.randint(0,50) for i in range(24)]\n",
+        "mb = np.array(mb).reshape(6,4)\n",
+        "print(mb)\n",
+        "print()\n",
+        "\n",
+        "# loading and saving in binary file\n",
+        "\n",
+        "np.save('random.npr',ma) # save a data in binary file\n",
+        "l =np.load('/content/random.npr.npy') # retrive the data from the saved file\n",
+        "print(l)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# loading and saving in text file\n",
+        "\n",
+        "np.savetxt('random.txt',mb,delimiter=\",\") # save a data in text file\n",
+        "np.genfromtxt('/content/random.txt',delimiter=\",\")"
+      ],
+      "metadata": {
+        "id": "4n1ktlM1sOcU",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "b1f5c890-e0d6-4f49-c04b-31231cda9240"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[ 9., 33., 27., 50.],\n",
+              "       [ 4., 45.,  4., 50.],\n",
+              "       [31., 22., 24., 47.],\n",
+              "       [32.,  8., 26., 11.],\n",
+              "       [42., 32., 15., 11.],\n",
+              "       [47., 10., 37., 28.]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "A6Wfic-0p2Be"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
